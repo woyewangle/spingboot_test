@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
+import javax.persistence.Entity;
+
 /**
  * @Author: 余锡鸿
  * @Description:
  * @Date: Create in 8:20 PM 7/27/2018
  * @Modified By:
  */
+
 public class Employee {
     public Long id;
     public String name;

@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import javax.persistence.Entity;
+
 /**
  * @Author: 余锡鸿
  * @Description:

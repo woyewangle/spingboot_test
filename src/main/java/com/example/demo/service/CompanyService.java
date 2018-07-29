@@ -29,22 +29,27 @@ public class CompanyService {
         return memoryDB.getCompanyList();
     }
 
-    public Company findCompanyById(int id) {
+    public Company findCompanyById(Long id) {
         return memoryDB.getCompanyList().stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
     }
 
-    public List<Company> addCompany(Company company) {
+    public Company addCompany(Company company) {
         memoryDB.getCompanyList().add(company);
-        return memoryDB.getCompanyList();
+        return company;
     }
 
-    public List<Company> deleteCompany(int id) {
-        memoryDB.getCompanyList().removeIf(company -> company.getId()==id);
-        return memoryDB.getCompanyList();
+    public Company deleteCompany(Long id) {
+        Company company=memoryDB.getCompanyList().stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
+        if(company==null){
+            return null;
+        }else {
+            memoryDB.getCompanyList().remove(company);
+            return company ;
+        }
 
     }
 
-    public Company updateCompany(int id, Company company) {
+    public Company updateCompany(long id, Company company) {
         List<Company> companyList = memoryDB.getCompanyList();
         Company newCompany=new Company();
         for (Company oldCompany : companyList) {
@@ -58,7 +63,7 @@ public class CompanyService {
     }
 
 
-    public List<Employee> getEmployeesByCompanyId(int id) {
+    public List<Employee> getEmployeesByCompanyId(Long id) {
         return memoryDB.getEmployeeList().stream()
                 .filter(employee -> employee.getCompanyId()==id)
                 .collect(Collectors.toList());

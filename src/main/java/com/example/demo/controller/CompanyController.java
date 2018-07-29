@@ -25,28 +25,28 @@ public class CompanyController {
     }
 
     @GetMapping("/companies/{id}")
-    public Company findCompanyById(@PathVariable int id){
+    public Company findCompanyById(@PathVariable Long id){
         System.out.println(companyService.findCompanyById(id));
         return companyService.findCompanyById(id);
     }
 
     @PostMapping("/companies")
-    public List<Company> addCompany(@RequestBody Company employee){
+    public Company addCompany(@RequestBody Company employee){
         return companyService.addCompany(employee);
     }
 
     @DeleteMapping("/companies/{id}")
-    public List<Company> deleteEmployee(@PathVariable int id){
+    public Company deleteEmployee(@PathVariable Long id){
         return companyService.deleteCompany(id);
     }
 
     @PutMapping("/companies/{id}")
-    public Company updateEmployee(@PathVariable int id, @RequestBody Company employee) {
+    public Company updateEmployee(@PathVariable Long id, @RequestBody Company employee) {
         return companyService.updateCompany(id,employee);
     }
 
     @GetMapping("/companies/{id}/employees")
-    public List<Employee> getEmployeesByCompanyId(@PathVariable int id) {
+    public List<Employee> getEmployeesByCompanyId(@PathVariable Long id) {
         return companyService.getEmployeesByCompanyId(id);
     }
 
@@ -54,4 +54,5 @@ public class CompanyController {
     public List<Company> getCompaniesByPage(@PathVariable int index, @PathVariable int size) {
         return companyService.getCompanyByPage(index, size);
     }
+
 }
